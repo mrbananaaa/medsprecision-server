@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { sensorRoute } from "./sensor";
 
 const route = Router();
 
@@ -9,14 +10,6 @@ route.get("/nlp", (_, res) => {
   });
 });
 
-route.post("/sensor", (req, res) => {
-  console.log(req.body);
-
-  res.status(200);
-
-  res.json({
-    message: "success!",
-  });
-});
+route.use("/sensor", sensorRoute);
 
 export { route as routeV1 };
